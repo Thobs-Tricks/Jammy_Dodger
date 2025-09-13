@@ -4,26 +4,29 @@
 
 ## 🎯 Project Name
 ``` c
-// TODO: Enter your project name here
+// Finance Quest
 ```
 
 ## 🚀 Summary
 ``` c
-// TODO: Write a short, high-level description of your
-// project (2–3 sentences).
+// Finance quest is a gamified financial management and literacy app designed to make budgeting and learning about money fun. Users fight "spending monsters" by tracking expenses and level up their knowledge in the Quiz arena through interactive financial literacy quizes
 ```
 
 ## ✨ Key Features
 ``` c
-// TODO: List key features.
+// Quiz arena: Play short quizzes on financial topics to earn coins.
+   Battle arena:Log expenses, and protect your wallet's health bar(weekly budget)
 ```
 
 ## 💡 Inspiration
 ``` c
-// TODO: Briefly explain the motivation behind your project.
+// Managing money can be tiring, so Finance Quest turns budgeting into a game and makes learning about money fun, and it motivates users through fun rewards and visual progress rather than dull spreadsheets.
 ```
 
 ## 📌 Future Improvements
 ``` c
-// TODO: Mention ideas or features you’d add if given more time.
+// Social Features: Leaderboards and shared battles.
+  AI-Powered tips: personalised spending advice based on user habits
+  Mini games: Quick financial challenges.
+  Bank intergration:Automatic expense tracking via secure financial APIs.
 ```
