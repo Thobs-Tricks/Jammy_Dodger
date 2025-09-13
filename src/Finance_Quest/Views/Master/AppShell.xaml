@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Finance_Quest.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Finance_Quest.Views.TabPages"
+
+    Shell.TabBarIsVisible="True"
+    Shell.TabBarForegroundColor="#F5B941"
+    Shell.TabBarTitleColor="#F5B941"
+    Shell.TabBarBackgroundColor="#1A2233"
+
+   >
+    <!--Shell.ForegroundColor="Blue"
+    Shell.BackgroundColor="GhostWhite">-->
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="HomePage"/>
+
+    <TabBar>
+        <ShellContent Icon="sword.png" Title="Home" ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
+        <ShellContent Icon="stats.png" Title="Stats" ContentTemplate="{DataTemplate local:StatsPage}" Route="StatsPage"/>
+        <ShellContent Icon="trophy.png" Title="Tophies" ContentTemplate="{DataTemplate local:AchievementPage}" Route="AchievementPage"/>
+        <ShellContent Icon="settings.png" Title="Settings" ContentTemplate="{DataTemplate local:SettingsPage}" Route="SettingsPage"/>
+    </TabBar>
+
+</Shell>
