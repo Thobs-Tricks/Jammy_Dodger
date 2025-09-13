@@ -9,13 +9,13 @@
 
 ## 🚀 Summary
 ``` c
- Finance quest is a gamified financial management and literacy app designed to make budgeting and learning about money fun. Users fight "spending monsters" by tracking expenses and level up their knowledge in the Quiz arena through interactive financial literacy quizes
+ Finance Quest is a gamified financial management and literacy app designed to make budgeting and learning about money fun. Users fight "spending monsters" by tracking expenses and level up their knowledge in the Quiz arena through interactive financial literacy quizzes
 ```
 
 ## ✨ Key Features
 ``` c
  Quiz arena: Play short quizzes on financial topics to earn coins.
-   Battle arena: Log expenses, and protect your wallet's health bar(weekly budget)
+ Battle arena: Log expenses, and protect your wallet's health bar(weekly budget)
 ```
 
 ## 💡 Inspiration
@@ -26,6 +26,6 @@
 ## 📌 Future Improvements
 ``` c
  Social Features: Leaderboards and shared battles.
-  AI-Powered tips: personalised spending advice based on user habit
-  Bank intergration: Automatic expense tracking via secure financial APIs.
+ AI-Powered tips: personalised spending advice based on user habits
+ Bank integration: Automatic expense tracking via secure financial APIs.
 ```
