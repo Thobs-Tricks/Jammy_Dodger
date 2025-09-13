@@ -5,6 +5,17 @@
 
              BackgroundColor="#4B2C20">
 
-
-    
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="*" Padding="0" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
+            <HorizontalStackLayout Padding="0" Spacing="25" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Finance Quest" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30" FontFamily="LS_Bold" Padding="0" />
+                <Image Source="shield.png" MaximumHeightRequest="40" MaximumWidthRequest="40" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Grid>
+    </Shell.TitleView>
+    <Grid>
+        <Border Margin="5" BackgroundColor="#F5F0E6" Padding="0" >
+            
+        </Border>
+    </Grid>
 </ContentPage>

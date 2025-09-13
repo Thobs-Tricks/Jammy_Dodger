@@ -10,10 +10,10 @@
     Shell.TabBarTitleColor="#F5B941"
     Shell.TabBarUnselectedColor="GhostWhite"
     Shell.TabBarBackgroundColor="#1A2233"
-
+    Shell.BackgroundColor="#734332"
     FlyoutBehavior="Disabled">
     <!--Shell.ForegroundColor="Blue"
-    Shell.BackgroundColor="GhostWhite">-->
+    >-->
 
     <TabBar>
         <ShellContent Icon="sword.png" Title="Home" ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
