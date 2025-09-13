@@ -8,21 +8,17 @@
     Shell.TabBarIsVisible="True"
     Shell.TabBarForegroundColor="#F5B941"
     Shell.TabBarTitleColor="#F5B941"
+    Shell.TabBarUnselectedColor="GhostWhite"
     Shell.TabBarBackgroundColor="#1A2233"
 
-   >
+    FlyoutBehavior="Disabled">
     <!--Shell.ForegroundColor="Blue"
     Shell.BackgroundColor="GhostWhite">-->
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:HomePage}"
-        Route="HomePage"/>
 
     <TabBar>
         <ShellContent Icon="sword.png" Title="Home" ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
         <ShellContent Icon="stats.png" Title="Stats" ContentTemplate="{DataTemplate local:StatsPage}" Route="StatsPage"/>
-        <ShellContent Icon="trophy.png" Title="Tophies" ContentTemplate="{DataTemplate local:AchievementPage}" Route="AchievementPage"/>
+        <ShellContent Icon="trophy.png" Title="Achievements" ContentTemplate="{DataTemplate local:AchievementPage}" Route="AchievementPage"/>
         <ShellContent Icon="settings.png" Title="Settings" ContentTemplate="{DataTemplate local:SettingsPage}" Route="SettingsPage"/>
     </TabBar>
 
