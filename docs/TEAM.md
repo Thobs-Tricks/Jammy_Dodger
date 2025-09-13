@@ -21,5 +21,5 @@ University of Johannesburg
 ```
 
 ## 📧 Other Contact Info
-- GitHub Repo: <[https://github.com/user-name/repo-name](https://github.com/Thobs-Tricks/Jammy_Dodger)>
+- GitHub Repo: <https://github.com/Thobs-Tricks/Jammy_Dodger>
 - Other Info (if available): LinkedIn, Website, etc.
