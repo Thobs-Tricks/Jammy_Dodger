@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Finance_Quest.Views.Home_Extended.AddExpensePage"
+             Shell.TabBarIsVisible="False"
+             Title="ADD EXPENSE"
+             BackgroundColor="#4B2C20">
+    <Grid>
+        <Border Margin="5" BackgroundColor="#F5F0E6" Padding="0" >
+
+        </Border>
+    </Grid>
+</ContentPage>

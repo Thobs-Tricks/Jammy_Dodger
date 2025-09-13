@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui;
+using Finance_Quest.ViewModels;
 using Finance_Quest.Views.TabPages;
 using Microsoft.Extensions.Logging;
 using Syncfusion.Maui.Core.Hosting;
@@ -24,6 +25,8 @@ namespace Finance_Quest
                     fonts.AddFont("LeagueSpartan-SemiBold.ttf", "LS_semiBold");
                     fonts.AddFont("LeagueSpartan-Regular.ttf", "LS_Regular");
                 });
+
+            builder.Services.AddSingleton<HomeVM>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<StatsPage>();

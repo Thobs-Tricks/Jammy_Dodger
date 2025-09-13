@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:progressBar="clr-namespace:Syncfusion.Maui.ProgressBar;assembly=Syncfusion.Maui.ProgressBar"
              x:Class="Finance_Quest.Views.TabPages.HomePage"
 
-             BackgroundColor="#4B2C20">
+             BackgroundColor="#4B2C20"
+
+             xmlns:vm="clr-namespace:Finance_Quest.ViewModels"
+             xmlns:mdl="clr-namespace:Finance_Quest.Models"
+             x:DataType="vm:HomeVM">
 
     <Shell.TitleView>
         <Grid ColumnDefinitions="*" Padding="0" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center">
@@ -15,7 +20,56 @@
     </Shell.TitleView>
     <Grid>
         <Border Margin="5" BackgroundColor="#F5F0E6" Padding="0" >
-            
+            <Grid ColumnDefinitions=".5*,.5*" ColumnSpacing="10" RowSpacing="20" Margin="10,10" RowDefinitions=".2*,.6*,.2*" Padding="0">
+                <VerticalStackLayout Grid.ColumnSpan="2" Spacing="10">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="BUDGET: R" TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
+                        <Label Text="200" TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
+                    </HorizontalStackLayout>
+
+                    <progressBar:SfLinearProgressBar ProgressFill="#4CAF50" Margin="30,0" TrackFill="#edc393" Progress="50" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
+                </VerticalStackLayout>
+
+                <Border Grid.Row="1" Margin="0,0,0,45" Stroke="#212121" VerticalOptions="Fill" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5" Padding="5">
+                    <VerticalStackLayout Spacing="10">
+                        <Image Source="goblin.png" MaximumHeightRequest="100" MaximumWidthRequest="100" VerticalOptions="Center" />
+                        <Label Text="COFFEE GOBLIN" LineBreakMode="TailTruncation" MaxLines="2" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+                        <Label Text="- R 5" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+                        <Border Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5">
+                            <progressBar:SfLinearProgressBar ProgressFill="#E53935" BackgroundColor="Transparent" TrackFill="#edc393" Progress="100" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1" Margin="0,0,0,45" VerticalOptions="Fill" Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5" Padding="5">
+                    <VerticalStackLayout Spacing="10">
+                        <Image Source="brainstorm.png" MaximumHeightRequest="100" MaximumWidthRequest="100" VerticalOptions="Center" />
+                        <Label Text="QUIZ" FontSize="35" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+                        <Image Source="mug.png" MaximumHeightRequest="55" MaximumWidthRequest="55" VerticalOptions="Center" />
+                        <Border Margin="0,10,0,0" Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5">
+                            <progressBar:SfLinearProgressBar ProgressFill="#4CAF50" BackgroundColor="Transparent" TrackFill="#edc393" Progress="75" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
+                        </Border>
+                    </VerticalStackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer />
+                    </Border.GestureRecognizers>
+                </Border>
+
+                <Border Grid.Row="2" Grid.ColumnSpan="2" Stroke="#212121" Margin="15,20" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5" Padding="0">
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="15" VerticalOptions="Center" Padding="0">
+                        <Border Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 40" HeightRequest="40" Padding="2" WidthRequest="40" StrokeThickness="5" VerticalOptions="Center">
+                            <Image Source="addition_sign.png" MaximumHeightRequest="40" MaximumWidthRequest="40" VerticalOptions="Center" />
+                        </Border>
+                        <Label Text="ADD EXPENSE" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GotoAddExpenseCommand}"/>
+                    </Border.GestureRecognizers>
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </ContentPage>
