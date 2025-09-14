@@ -12,12 +12,12 @@ namespace Finance_Quest.Models
     {
         public string Week { get; set; } = string.Empty;
         [ObservableProperty]
-        public double BudgetAmount { get; set; }
+        private double budgetAmount;
         [ObservableProperty]
-        public double Balance { get; set; }
+        private double balance;
         [ObservableProperty]
-        public int ProgressValue { get; set; }
+        private int progressValue;
         [ObservableProperty]
-        public ObservableCollection<ExpenseModel> Expenses { get; set; } = [];
+        public ObservableCollection<ExpenseModel> Expenses = [];
     }
 }

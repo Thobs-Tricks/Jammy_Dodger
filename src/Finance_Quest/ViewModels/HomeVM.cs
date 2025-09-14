@@ -23,14 +23,14 @@ namespace Finance_Quest.ViewModels
         public HomeVM()
         {
             // Initialize categories
-            Categories = new ObservableCollection<string>
-            {
+            Categories =
+            [
                 "Food",
                 "Transport",
                 "Shopping",
                 "Entertainment",
                 "Other"
-            };
+            ];
         }
 
         [RelayCommand]
@@ -113,8 +113,10 @@ namespace Finance_Quest.ViewModels
 
                 ExpenseMdl = newExpense;
 
-                var newBalance = (WeeklyBudget.Balance - expenseAmount);
-                WeeklyBudget.Balance = newBalance;
+                WeeklyBudget.Balance -= expenseAmount;
+
+                // Add expense to current weekly budget
+                //WeeklyBudget.Expenses.Add(newExpense);
 
                 // Close the popup
                 ClosePop();
@@ -155,11 +157,7 @@ namespace Finance_Quest.ViewModels
             }
             else
             {
-                ExpenseColor = Color.FromArgb("E53935");
-
-              
-
-                
+                ExpenseColor = Color.FromArgb("E53935");                
             }
         }
 
