@@ -13,10 +13,9 @@ Follow the steps below to set up and run the project. (Example)
 // TODO: List software, runtimes, frameworks, and or dependencies
 // along with instructions on how to set each up.
 ```
-- Example: Node.js v18+
-- Example: Python 3.10
-- Example: Docker
-
+- Visual Studio 2022 (Latest)
+- .NET 9 SDK
+- .NET MAUI Framework
 ---
 
 ## ⚙️ Installation
