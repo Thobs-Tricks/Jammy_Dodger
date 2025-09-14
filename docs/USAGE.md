@@ -25,8 +25,8 @@ npm start
 // TODO: Link your demo video and PowerPoint here
 ```
 Check out the Demos: 
-- [Demo Video](../demo/demo.mp4)
-- [Demo Presentation](../demo/demo.pptx)
+- [Demo Video]<https://youtu.be/1HEnGfzJ8cQ>
+- [Demo Presentation](../demo/Jammer Dodger PP.pptx)
 
 ## 📌 Notes
 ``` c
