@@ -31,7 +31,7 @@
             <!-- Amount -->
             <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Margin="0,20,0,0">
                 <Label Text="Amount (R)" FontSize="18" TextColor="#4B2C20" FontAttributes="Bold"/>
-                <Entry Text="{Binding Amount}" Placeholder="Enter amount" FontAttributes="Bold" Keyboard="Numeric" BackgroundColor="White" TextColor="#4B2C20" HeightRequest="45" Margin="0,5"/>
+                <Entry Text="{Binding ExpenseAmount}" Placeholder="Enter amount" FontAttributes="Bold" Keyboard="Numeric" BackgroundColor="White" TextColor="#4B2C20" HeightRequest="45" Margin="0,5"/>
             </VerticalStackLayout>
 
             <!-- Category -->

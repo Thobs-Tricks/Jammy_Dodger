@@ -10,5 +10,13 @@ namespace Finance_Quest.Views.TabPages
             InitializeComponent();
             BindingContext = vm;
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            var vm = (HomeVM)BindingContext;
+
+            vm.InitiateHome();
+        }
     }
 }

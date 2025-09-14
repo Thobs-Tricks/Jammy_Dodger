@@ -18,32 +18,10 @@ namespace Finance_Quest.ViewModels
         private bool isBusy;
 
         [ObservableProperty]
-        private string budget = "";
-
-        [ObservableProperty]
-        private double budgetProgress;
+        private WeeklyBudgetModel weeklyBudget;
 
         public HomeVM()
         {
-
-            Caching.SetCache("Budget Amount", 1000.0m);
-            Caching.SetCache("Budget Prgress", 100);
-
-            // Initialize budget from cache or set to 0 if not available
-
-            if (Caching.GetCache<decimal>("Budget Amount") == 0)
-            {
-                Budget = "0.0";
-                _= Shell.Current.DisplayAlert("Set Budget", "You have not set a budget yet. Please set your budget in the Settings page.", "OK");
-            }
-            else
-            {
-                var getBudget = Caching.GetCache<decimal>("Budget Amount");
-                var getbudgetP = Caching.GetCache<decimal>("Budget Progress");
-                Budget = getBudget.ToString();
-                BudgetProgress = (double)getbudgetP;
-            }
-
             // Initialize categories
             Categories = new ObservableCollection<string>
             {
@@ -53,6 +31,23 @@ namespace Finance_Quest.ViewModels
                 "Entertainment",
                 "Other"
             };
+        }
+
+        [RelayCommand]
+        public void InitiateHome()
+        {
+            var existingWeeklyBudget = Caching.GetCache<ObservableCollection<WeeklyBudgetModel>>("WeeklyBudget");
+
+            if(existingWeeklyBudget != null && existingWeeklyBudget.Count > 0)
+            {
+                WeeklyBudget = existingWeeklyBudget[0];
+
+            }
+            else
+            {
+
+            }
+
         }
 
         //Goto Add Expense Popup Page
@@ -65,6 +60,9 @@ namespace Finance_Quest.ViewModels
         [RelayCommand]
         public async void ClosePop()
         {
+            // Clear input fields
+            ExpenseAmount = string.Empty;
+            SelectedCategory = null;
             await popup.CloseAsync();
         }
 
@@ -74,50 +72,18 @@ namespace Finance_Quest.ViewModels
         [ObservableProperty]
         private string selectedCategory;
 
+
         [ObservableProperty]
-        private string amount;
+        private ExpenseModel expenseMdl;
 
-        public void CalculatePercentage()
-        {
-            // Implement your percentage calculation logic here
-            var budgetAmount = Caching.GetCache<decimal>("Budget Amount");
+        [ObservableProperty]
+        private string expenseAmount;
 
-            if (decimal.TryParse(Amount, out decimal expenseAmount) && budgetAmount > 0)
-            {
-                var percentage = (expenseAmount / budgetAmount) * 100;
-                // You can store or display this percentage as needed
-                ChooseMonster(percentage);
-            }else
-            {
+        [ObservableProperty]
+        private string monsterHealth = "0.0";
 
-            }
-
-        }
-
-
-
-        public void ChooseMonster(decimal percenatage)
-        {
-            // Implement your monster choosing logic here based on the percentage
-            if (percenatage < 20)
-            {
-                // Choose monster A
-
-            }
-            else if (percenatage < 50)
-            {
-                // Choose monster B
-            }
-            else if (percenatage < 80)
-            {
-                // Choose monster C
-            }
-            else
-            {
-                // Choose monster D
-            }
-        }
-
+        [ObservableProperty]
+        private Color expenseColor = Color.FromArgb("#F5F0E6");
 
         [RelayCommand]
         private void SaveExpense()
@@ -126,45 +92,29 @@ namespace Finance_Quest.ViewModels
 
             try
             {
-                if (string.IsNullOrWhiteSpace(Amount) || string.IsNullOrWhiteSpace(SelectedCategory))
+                if (string.IsNullOrWhiteSpace(ExpenseAmount) || string.IsNullOrWhiteSpace(SelectedCategory))
                 {
                     _ = Shell.Current.DisplayAlert("Error", "Please fill in all fields.", "OK");
                     return;
                 }
-                if (!decimal.TryParse(Amount, out decimal expenseAmount) || expenseAmount <= 0)
+                if (!double.TryParse(ExpenseAmount, out double expenseAmount) || expenseAmount <= 0)
                 {
                     _ = Shell.Current.DisplayAlert("Error", "Please enter a valid amount.", "OK");
                     return;
                 }
 
                 // Save the expense to your data storage (e.g., database, file, etc.)
-                // Example: ExpenseService.SaveExpense(new Expense { Amount = expenseAmount, Category = SelectedCategory, Date = DateTime.Now });
-
                 var newExpense = new ExpenseModel()
                 {
                     Price = expenseAmount,
                     Category = SelectedCategory,
                 };
 
-                var existingExpenses = Caching.GetCache<ObservableCollection<ExpenseModel>>("ExpensesList") ?? new ObservableCollection<ExpenseModel>();
-                existingExpenses.Add(newExpense);
-                Caching.SetCache("ExpensesList", existingExpenses);
 
+                ExpenseMdl = newExpense;
 
-                // Calculate percentage and choose monster
-                CalculatePercentage();
-
-                // Update budget display
-                var budgetAmount = Caching.GetCache<decimal>("Budget Amount");
-                var value = (budgetAmount - expenseAmount);
-
-                Budget = value.ToString();
-                AmountLeft = value;
-
-                // Clear input fields
-                Amount = string.Empty;
-                SelectedCategory = null;
-
+                var newBalance = (WeeklyBudget.Balance - expenseAmount);
+                WeeklyBudget.Balance = newBalance;
 
                 // Close the popup
                 ClosePop();
@@ -184,38 +134,33 @@ namespace Finance_Quest.ViewModels
 
         }
 
-        [ObservableProperty]
-        private decimal amountLeft;
-
-        [ObservableProperty]
-        private string monsterHealth = "0.0";
-
-        [ObservableProperty]
-        private Color expenseColor = Color.FromArgb("#F5F0E6");
 
         [RelayCommand]
         public void AfterClose()
         {
-            if (AmountLeft > 0)
+            if(WeeklyBudget.Balance > 0)
             {
-                ExpenseColor = Color.FromArgb("#E53935");
-                // When updating budget
-                BudgetProgress = 100 - ((double)(AmountLeft / Caching.GetCache<decimal>("Budget Amount")) * 100);
+                ExpenseColor = Color.FromArgb("E53935");
 
-                // When updating monster
-                MonsterHealth = Math.Max(0,100).ToString();
+                var value = ((WeeklyBudget.BudgetAmount - WeeklyBudget.Balance) / WeeklyBudget.BudgetAmount) * 100;
+                var value2 = 100 - value;
+
+                for(double r = WeeklyBudget.Balance; r >= value2; r--)
+                {
+                    WeeklyBudget.ProgressValue = (int)value2;
+                }
+
+                MonsterHealth = "100";
+
             }
             else
             {
-                ExpenseColor = Color.FromArgb("#4CAF50");
+                ExpenseColor = Color.FromArgb("E53935");
 
-                // When updating budget
-                BudgetProgress = (double)(AmountLeft / Caching.GetCache<decimal>("Budget Amount"));
+              
 
-                // When updating monster
-                MonsterHealth = Math.Max(0, BudgetProgress * 100).ToString();
+                
             }
-
         }
 
 
