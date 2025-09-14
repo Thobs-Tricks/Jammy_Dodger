@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Finance_Quest.Views.Home_Extended.AddExpensePage"
-             Shell.TabBarIsVisible="False"
-             Title="ADD EXPENSE"
-             BackgroundColor="#4B2C20">
-    <Grid>
-        <Border Margin="5" BackgroundColor="#F5F0E6" Padding="0" >
+<pop:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Finance_Quest.Views.Home_Extended.AddExpensePage"
+            xmlns:pop="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+            Shell.TabBarIsVisible="True"
+            BackgroundColor="#4B2C20"
 
-        </Border>
-    </Grid>
-</ContentPage>
+            xmlns:vm="clr-namespace:Finance_Quest.ViewModels"
+            xmlns:mdl="clr-namespace:Finance_Quest.Models"
+            x:DataType="vm:HomeVM"
+           
+            Padding="0"
+            CanBeDismissedByTappingOutsideOfPopup="True">
+    
+    <Border Margin="0"  Padding="20" WidthRequest="300" BackgroundColor="#F5F0E6" Stroke="#4B2C20" StrokeShape="RoundRectangle 20" VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="*, Auto">
+
+            <!-- Title -->
+            <Label Text="ADD EXPENSE" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+
+            <!-- Close Button -->
+            <Border Grid.Row="0" Grid.Column="1" Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 35" HeightRequest="35" Padding="2" WidthRequest="35" StrokeThickness="5" HorizontalOptions="End" VerticalOptions="Start">
+                <Image Rotation="45" Source="addition_sign.png" MaximumHeightRequest="35" MaximumWidthRequest="35" VerticalOptions="Center" />
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClosePopCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+
+            <!-- Amount -->
+            <VerticalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Margin="0,20,0,0">
+                <Label Text="Amount (R)" FontSize="18" TextColor="#4B2C20" FontAttributes="Bold"/>
+                <Entry Text="{Binding Amount}" Placeholder="Enter amount" FontAttributes="Bold" Keyboard="Numeric" BackgroundColor="White" TextColor="#4B2C20" HeightRequest="45" Margin="0,5"/>
+            </VerticalStackLayout>
+
+            <!-- Category -->
+            <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Margin="0,20,0,0">
+                <Label Text="Category" FontSize="18" FontAttributes="Bold" TextColor="#4B2C20"/>
+                <Picker ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}" Title="Select Category" FontAttributes="Bold" BackgroundColor="White" TextColor="#4B2C20" HeightRequest="45" Margin="0,5"/>
+            </VerticalStackLayout>
+
+            <!-- Add Expense Button -->
+            <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Add Expense" BackgroundColor="#F5B941" TextColor="#4B2C20" CornerRadius="12"
+                    FontAttributes="Bold" FontSize="Medium" HeightRequest="50" Padding="0" Margin="0,25,0,0"
+                    Command="{Binding SaveExpenseCommand}"/>
+
+        </Grid>
+    </Border>
+</pop:Popup>

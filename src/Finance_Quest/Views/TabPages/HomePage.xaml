@@ -23,16 +23,16 @@
             <Grid ColumnDefinitions=".5*,.5*" ColumnSpacing="10" RowSpacing="20" Margin="10,10" RowDefinitions=".2*,.6*,.2*" Padding="0">
                 <VerticalStackLayout Grid.ColumnSpan="2" Spacing="10">
                     <HorizontalStackLayout HorizontalOptions="Center">
-                        <Label Text="BUDGET: R" TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
-                        <Label Text="200" TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
+                        <Label Text="BUDGET: R " TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
+                        <Label Text="{Binding Budget}" TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
                     </HorizontalStackLayout>
 
-                    <progressBar:SfLinearProgressBar ProgressFill="#4CAF50" Margin="30,0" TrackFill="#edc393" Progress="50" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
+                    <progressBar:SfLinearProgressBar ProgressFill="#4CAF50" Margin="30,0" TrackFill="#edc393" Progress="{Binding Budget}" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
                 </VerticalStackLayout>
 
                 <Border Grid.Row="1" Margin="0,0,0,45" Stroke="#212121" VerticalOptions="Fill" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5" Padding="5">
                     <VerticalStackLayout Spacing="10">
-                        <Image Source="goblin.png" MaximumHeightRequest="100" MaximumWidthRequest="100" VerticalOptions="Center" />
+                        <Image Source="monster.png" MaximumHeightRequest="100" MaximumWidthRequest="100" VerticalOptions="Center" />
                         <Label Text="COFFEE GOBLIN" LineBreakMode="TailTruncation" MaxLines="2" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
                         <Label Text="- R 5" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
                         <Border Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5">
@@ -54,7 +54,7 @@
                         </Border>
                     </VerticalStackLayout>
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer />
+                        <TapGestureRecognizer Command="{Binding GotoQuizCommand}" />
                     </Border.GestureRecognizers>
                 </Border>
 

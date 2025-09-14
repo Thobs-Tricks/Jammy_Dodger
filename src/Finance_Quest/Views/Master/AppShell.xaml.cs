@@ -9,6 +9,7 @@ namespace Finance_Quest
             InitializeComponent();
 
             Routing.RegisterRoute("AddExpensePage", typeof(AddExpensePage));
+            Routing.RegisterRoute("QuizPage", typeof(QuizPage));
         }
     }
 }

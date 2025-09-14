@@ -66,6 +66,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.9" />
 		<PackageReference Include="MonkeyCache.FileStore" Version="2.1.1" />
 		<PackageReference Include="Syncfusion.Maui.Core" Version="31.1.19" />
+		<PackageReference Include="Syncfusion.Maui.Popup" Version="31.1.19" />
 		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="31.1.19" />
 	</ItemGroup>
 
@@ -77,6 +78,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Home_Extended\AddExpensePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Home_Extended\QuizPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\TabPages\AchievementPage.xaml">

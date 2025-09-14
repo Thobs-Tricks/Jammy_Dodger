@@ -14,8 +14,8 @@ namespace Finance_Quest
 
             //Set up cache
             Barrel.ApplicationId = AppInfo.PackageName;
-            //Barrel.Current.AutoExpire = false;
-            //Barrel.Current.EmptyExpired();
+            Barrel.Current.AutoExpire = false;
+            Barrel.Current.EmptyExpired();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
