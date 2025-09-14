@@ -27,16 +27,16 @@
                         <Label Text="{Binding Budget}" TextColor="#212121" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="35" FontFamily="LS_Bold" Padding="0" />
                     </HorizontalStackLayout>
 
-                    <progressBar:SfLinearProgressBar ProgressFill="#4CAF50" Margin="30,0" TrackFill="#edc393" Progress="{Binding Budget}" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
+                    <progressBar:SfLinearProgressBar ProgressFill="#4CAF50" Margin="30,0" TrackFill="#edc393" Progress="{Binding BudgetProgress}" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
                 </VerticalStackLayout>
 
                 <Border Grid.Row="1" Margin="0,0,0,45" Stroke="#212121" VerticalOptions="Fill" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5" Padding="5">
                     <VerticalStackLayout Spacing="10">
                         <Image Source="monster.png" MaximumHeightRequest="100" MaximumWidthRequest="100" VerticalOptions="Center" />
                         <Label Text="COFFEE GOBLIN" LineBreakMode="TailTruncation" MaxLines="2" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
-                        <Label Text="- R 5" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding MonsterHealth, StringFormat='- R {0}'}" FontSize="30" FontFamily="LS_Bold" VerticalTextAlignment="Center" Margin="0,0,0,5" HorizontalTextAlignment="Center"/>
                         <Border Stroke="#212121" BackgroundColor="#edc393" StrokeShape="RoundRectangle 10" StrokeThickness="5">
-                            <progressBar:SfLinearProgressBar ProgressFill="#E53935" BackgroundColor="Transparent" TrackFill="#edc393" Progress="100" TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
+                            <progressBar:SfLinearProgressBar ProgressFill="{Binding ExpenseColor}" Progress="{Binding MonsterHealth}" BackgroundColor="Transparent" TrackFill="#edc393"  TrackHeight="18" TrackCornerRadius="10" ProgressHeight="20" ProgressCornerRadius="10" />
                         </Border>
                     </VerticalStackLayout>
                     <Border.GestureRecognizers>

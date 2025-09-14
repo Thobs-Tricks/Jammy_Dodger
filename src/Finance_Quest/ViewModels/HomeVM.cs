@@ -19,8 +19,18 @@ namespace Finance_Quest.ViewModels
 
         [ObservableProperty]
         private string budget = "";
+
+        [ObservableProperty]
+        private double budgetProgress;
+
         public HomeVM()
         {
+
+            Caching.SetCache("Budget Amount", 1000.0m);
+            Caching.SetCache("Budget Prgress", 100);
+
+            // Initialize budget from cache or set to 0 if not available
+
             if (Caching.GetCache<decimal>("Budget Amount") == 0)
             {
                 Budget = "0.0";
@@ -29,7 +39,9 @@ namespace Finance_Quest.ViewModels
             else
             {
                 var getBudget = Caching.GetCache<decimal>("Budget Amount");
+                var getbudgetP = Caching.GetCache<decimal>("Budget Progress");
                 Budget = getBudget.ToString();
+                BudgetProgress = (double)getbudgetP;
             }
 
             // Initialize categories
@@ -157,7 +169,7 @@ namespace Finance_Quest.ViewModels
                 // Close the popup
                 ClosePop();
 
-
+                AfterClose();
 
                 _ = Toast.Make("Expense added successfully.").Show();
             }
@@ -176,32 +188,32 @@ namespace Finance_Quest.ViewModels
         private decimal amountLeft;
 
         [ObservableProperty]
-        private string monsterHealth;
+        private string monsterHealth = "0.0";
 
         [ObservableProperty]
-        private Color expenseColor;
+        private Color expenseColor = Color.FromArgb("#F5F0E6");
 
         [RelayCommand]
         public void AfterClose()
         {
-            if (value > 0)
+            if (AmountLeft > 0)
             {
-                for (int r = 1; r =< Amount; r += 2)
-                {
-                    Amount -= r
-                }
+                ExpenseColor = Color.FromArgb("#E53935");
+                // When updating budget
+                BudgetProgress = 100 - ((double)(AmountLeft / Caching.GetCache<decimal>("Budget Amount")) * 100);
 
-
-
+                // When updating monster
+                MonsterHealth = Math.Max(0,100).ToString();
             }
             else
             {
-                for (int r = 1; r =< Amount; r += 2)
-                {
-                    Amount -= r
-                }
+                ExpenseColor = Color.FromArgb("#4CAF50");
 
-                ExpenseColor = Color.FromArgb("#E53935")
+                // When updating budget
+                BudgetProgress = (double)(AmountLeft / Caching.GetCache<decimal>("Budget Amount"));
+
+                // When updating monster
+                MonsterHealth = Math.Max(0, BudgetProgress * 100).ToString();
             }
 
         }
